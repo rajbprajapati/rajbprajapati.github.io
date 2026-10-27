@@ -224,7 +224,7 @@ export const portfolioData = {
       highlights: [
         "Leading a team of 8 full-stack developers on a new AI-based learning and development project, owning ideation, scoping, milestone definition, and task management end-to-end.",
         "Received the company-wide Appreciation for Q2 deliverables, recognized for standout performance in model ingestion and benchmarking, and consistently supporting the team across multiple workstreams.",
-        "Led end-to-end delivery of a full-stack application as tech lead for a 3-engineer team, setting coding and review standards that kept 100% of committed features on schedule across two quarters.",
+        "Led end-to-end delivery of a full-stack application for a 3-engineer team, setting coding and review standards that kept 100% of committed features on schedule across two quarters.",
         "Architected an event-driven, auto-scaling simulation engine for power systems, lifting daily throughput from 100+ to 1,000+ simulations/day (10x) without added infrastructure cost.",
         "Led a zero-downtime upgrade of a production Elasticsearch cluster to the latest major version with zero data loss, sustaining 99.99% availability throughout.",
         "Redesigned Elasticsearch indexing strategy and Firebase I/O patterns, cutting Firebase operational cost by ~80% while improving query latency.",

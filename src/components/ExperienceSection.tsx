@@ -55,7 +55,7 @@ export default function ExperienceSection() {
                         <h3 className="text-lg sm:text-xl font-bold text-white">{exp.role}</h3>
                         {idx === 0 && (
                           <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
-                            Current Role · Tech Lead
+                            Current Role
                           </span>
                         )}
                       </div>

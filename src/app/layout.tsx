@@ -160,14 +160,30 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} dark scroll-smooth`}>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} dark scroll-smooth`} suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var t = localStorage.getItem('theme');
+                  if (t === 'light') {
+                    document.documentElement.classList.remove('dark');
+                  } else {
+                    document.documentElement.classList.add('dark');
+                  }
+                } catch(e) {}
+              })();
+            `,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-screen bg-[#060913] text-slate-100 antialiased font-sans selection:bg-cyan-500/25 selection:text-cyan-200">
+      <body className="min-h-screen bg-slate-50 text-slate-900 dark:bg-[#060913] dark:text-slate-100 antialiased font-sans selection:bg-cyan-500/25 selection:text-cyan-600 dark:selection:text-cyan-200">
         {children}
       </body>
     </html>

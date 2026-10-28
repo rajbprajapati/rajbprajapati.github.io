@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Download, Menu, X, ArrowUpRight, Terminal } from "lucide-react";
+import { Download, Menu, X, ArrowUpRight } from "lucide-react";
+import ThemeToggle from "@/components/ThemeToggle";
 import { portfolioData } from "@/data/portfolio";
 
 export default function Navbar() {
@@ -18,121 +19,128 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Architecture", href: "#architecture" },
-    { name: "Impact & Bento", href: "#bento-impact" },
-    { name: "Experience", href: "#experience" },
-    { name: "Credentials", href: "#credentials" },
-    { name: "Skills", href: "#skills" },
-    { name: "Contact", href: "#contact" },
+    { name: "Career Trajectory", emoji: "🚀", href: "#career-trajectory" },
+    { name: "Systems & Craft", emoji: "⚡", href: "#systems-craft" },
+    { name: "Arsenal", emoji: "🛠️", href: "#arsenal" },
+    { name: "Build Together", emoji: "🤝", href: "#build-together" },
   ];
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#060913]/90 backdrop-blur-xl border-b border-slate-800/80 shadow-2xl py-3"
-          : "bg-transparent py-5"
+          ? "bg-white/90 dark:bg-[#060913]/90 backdrop-blur-xl border-b border-slate-200/80 dark:border-slate-800/80 shadow-sm py-3 sm:py-3.5"
+          : "bg-white/60 dark:bg-[#060913]/60 backdrop-blur-md border-b border-slate-200/40 dark:border-slate-800/40 py-3.5 sm:py-4"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          {/* Logo / Monogram */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 via-blue-600 to-emerald-400 p-[1px] shadow-lg shadow-cyan-500/10 group-hover:shadow-cyan-500/30 transition-all duration-300">
-              <div className="w-full h-full bg-[#080d1a] rounded-xl flex items-center justify-center font-mono font-bold text-cyan-400 text-sm tracking-wider">
+        <div className="flex items-center justify-between gap-4">
+          {/* Left: Brand Monogram & Name */}
+          <Link href="/" className="flex items-center gap-3 group shrink-0">
+            <div className="w-8.5 h-8.5 rounded-xl bg-gradient-to-tr from-cyan-500 via-blue-600 to-emerald-400 p-[1px] shadow-sm group-hover:shadow-cyan-500/25 transition-all">
+              <div className="w-full h-full bg-slate-900 rounded-[11px] flex items-center justify-center font-mono font-bold text-cyan-400 text-xs">
                 RP
               </div>
             </div>
-            <div className="flex flex-col">
-              <span className="font-bold text-white text-sm sm:text-base tracking-tight group-hover:text-cyan-300 transition-colors">
+            <div className="flex items-baseline gap-2">
+              <span className="font-bold text-slate-900 dark:text-white text-sm sm:text-base tracking-tight group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
                 {portfolioData.personal.name}
               </span>
-              <span className="text-[11px] font-mono text-slate-400 flex items-center gap-1.5">
-                <Terminal className="w-3 h-3 text-cyan-400" />
-                Backend & Distributed Systems
+              <span className="hidden md:inline text-xs font-mono text-slate-500 dark:text-slate-400">
+                / Systems Engineer
               </span>
             </div>
           </Link>
 
-          {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center gap-1 bg-slate-900/70 border border-slate-800/80 px-3 py-1.5 rounded-full backdrop-blur-md shadow-inner">
+          {/* Center: Minimalist Centered Navigation Links */}
+          <nav className="hidden md:flex items-center gap-5 lg:gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-all"
+                className="inline-flex items-center gap-1.5 text-sm lg:text-[15px] font-semibold text-slate-700 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors relative py-1.5 after:absolute after:bottom-0 after:left-0 after:w-0 hover:after:w-full after:h-[2.5px] after:bg-cyan-500 after:transition-all after:duration-200"
               >
-                {link.name}
+                <span className="text-sm select-none">{link.emoji}</span>
+                <span>{link.name}</span>
               </a>
             ))}
           </nav>
 
-          {/* Right Action: Status indicator & Resume CTA */}
-          <div className="hidden sm:flex items-center gap-3">
-            <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse-subtle" />
-              <span>Available for Staff/Lead Roles</span>
+          {/* Right Action: Availability, ThemeToggle & Minimal Resume CTA */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Live Availability Badge (Desktop only) */}
+            <div className="hidden xl:flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-mono">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse-subtle" />
+              <span>Open to Roles</span>
             </div>
 
-            <a
-              href={portfolioData.personal.resumeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 shadow-md shadow-cyan-500/20 transition-all duration-200"
-            >
-              <Download className="w-3.5 h-3.5" />
-              <span>Resume PDF</span>
-            </a>
-          </div>
+            {/* Dark/Light Mode Switcher */}
+            <ThemeToggle />
 
-          {/* Mobile Menu Button */}
-          <div className="flex sm:hidden items-center gap-2">
+            {/* Clean Resume Outline/Surface Button */}
             <a
               href={portfolioData.personal.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-cyan-500 text-slate-950 flex items-center gap-1"
+              className="hidden sm:inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-white hover:bg-slate-50 dark:bg-slate-900 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold text-xs sm:text-sm transition-all shadow-sm hover:border-slate-400 dark:hover:border-slate-600"
             >
-              <Download className="w-3 h-3" />
-              <span>CV</span>
+              <span>Resume PDF</span>
+              <Download className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />
             </a>
+
+            {/* Mobile Menu Toggle Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white"
+              className="p-2 rounded-xl md:hidden bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
               aria-label="Toggle navigation menu"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5 text-slate-700 dark:text-slate-300" />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div className="sm:hidden bg-[#0a0f20]/95 backdrop-blur-2xl border-b border-slate-800 px-4 pt-3 pb-6 mt-2 space-y-2">
-          <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono mb-3">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse-subtle" />
-            <span>Available for Staff/Lead Roles</span>
+        <div className="md:hidden bg-white/95 dark:bg-[#060913]/95 backdrop-blur-2xl border-b border-slate-200 dark:border-slate-800 px-4 pt-3 pb-6 mt-2 space-y-3 shadow-xl transition-all">
+          <div className="flex items-center justify-between py-1">
+            <span className="text-xs font-mono text-slate-500 dark:text-slate-400 font-bold">NAVIGATION</span>
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-[11px] font-mono">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse-subtle" />
+              <span>Open to Roles</span>
+            </div>
           </div>
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 rounded-lg text-sm text-slate-200 hover:bg-slate-800/80 hover:text-cyan-400 transition-colors"
-            >
-              {link.name}
-            </a>
-          ))}
-          <div className="pt-2 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400 font-mono">
-            <span>rajprajapatibusiness@gmail.com</span>
+
+          <div className="grid grid-cols-2 gap-2.5">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-200 bg-slate-100/80 dark:bg-slate-900/70 hover:bg-cyan-50 dark:hover:bg-slate-800 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors border border-slate-200/60 dark:border-slate-800"
+              >
+                <span className="text-base select-none">{link.emoji}</span>
+                <span>{link.name}</span>
+              </a>
+            ))}
+          </div>
+
+          <div className="pt-3 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row gap-2.5">
             <a
               href={portfolioData.personal.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-cyan-400 hover:underline flex items-center gap-1"
+              className="w-full py-2.5 rounded-xl bg-cyan-500 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 shadow-sm"
             >
-              Resume <ArrowUpRight className="w-3 h-3" />
+              <Download className="w-4 h-4" />
+              <span>Download Resume</span>
+            </a>
+            <a
+              href={`mailto:${portfolioData.personal.email}`}
+              className="w-full py-2.5 rounded-xl bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-800 font-mono text-xs flex items-center justify-center gap-1.5"
+            >
+              <span>{portfolioData.personal.email}</span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-slate-400" />
             </a>
           </div>
         </div>

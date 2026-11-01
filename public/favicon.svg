@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="border-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="50%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c1322" />
+      <stop offset="100%" stop-color="#050811" />
+    </linearGradient>
+    <linearGradient id="rp-fill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#22d3ee" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Outer squircle with gradient stroke -->
+  <rect x="3" y="3" width="58" height="58" rx="16" fill="url(#bg-grad)" stroke="url(#border-grad)" stroke-width="3.5" />
+
+  <!-- Letter 'R' (precise vector path) -->
+  <path d="M 14 18 H 25 C 28.5 18 31 20.2 31 24.5 C 31 28.5 28.5 30.8 25 31 L 31.5 46 H 25.8 L 19.8 32 H 19.4 V 46 H 14 Z M 19.4 22.8 V 27.4 H 24.2 C 25.8 27.4 26.8 26.3 26.8 25.1 C 26.8 23.9 25.8 22.8 24.2 22.8 Z" fill="url(#rp-fill)" />
+
+  <!-- Letter 'P' (precise vector path) -->
+  <path d="M 33.5 18 H 44.5 C 48 18 50.5 20.2 50.5 25 C 50.5 29.8 48 32 44.5 32 H 38.9 V 46 H 33.5 Z M 38.9 22.8 V 27.4 H 43.8 C 45.4 27.4 46.4 26.3 46.4 25 C 46.4 23.7 45.4 22.8 43.8 22.8 Z" fill="url(#rp-fill)" />
+</svg>

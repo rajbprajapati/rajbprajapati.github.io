@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
 import { portfolioData } from "@/data/portfolio";
 
@@ -192,6 +193,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
+      <GoogleTagManager gtmId="GTM-NQCM9HMB" />
       <body className="min-h-screen bg-slate-50 text-slate-900 dark:bg-[#060913] dark:text-slate-100 antialiased font-sans selection:bg-cyan-500/25 selection:text-cyan-600 dark:selection:text-cyan-200">
         {children}
       </body>
